@@ -3,10 +3,13 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
-
+# Необходимо дать доступ к Яндексу в настройках.
+# Все настройки -> Почтовые программы -> Поставить галочку к 'С сервера imap.yandex.ru по протоколу IMAP' и все галочки внутри.
 def send_ya_mail(recipients_emails: list, msg_text: str):
-    login = 'kell.me.plz@yandex.ru'
-    password = 'your_password'
+    login = 'ur_email@yandex.ru' #login = os.getenv('YA_LOGIN', 'kell.me.plz@yandex.ru')
+    password = 'ur_password'#password = os.getenv('YA_PASSWORD')
+# Логин и пароль можно поместить в переменную среду. Сделать это можно через командную строку(если виндовс)
+# setx YA_PASSWORD ваш_пароль
 
     msg = MIMEText(f'{msg_text}', 'plain', 'utf-8')
     msg['Subject'] = Header('Важно!!!', 'utf-8')
@@ -23,7 +26,7 @@ def send_ya_mail(recipients_emails: list, msg_text: str):
 
 
 def main():
-    send_ya_mail(recipients_emails=['hlopchegg@gmail.com', 'kell.me.plz@yandex.ru'], msg_text='Привет, возьми Светку на шашлыки')
+    send_ya_mail(recipients_emails=['mail@mail.ru', 'mail2@mail.ru' ], msg_text='Привет, займи тыщу плиз')
 
 
 if __name__ == '__main__':
